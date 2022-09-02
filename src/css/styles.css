@@ -18,3 +18,34 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+.card__descr {
+  display: flex;
+}
+
+.descr {
+  font-weight: bold;
+}
+
+.card__box {
+  display: block;
+  margin-left: 10px;
+}
+
+.card__title {
+  font-size: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.card__text,
+.card__list {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card__list {
+  list-style: none;
+  padding-left: 0;
+}
