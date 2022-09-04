@@ -5,5 +5,5 @@ export default function fetchCountries(name) {
                 throw new Error(res.status);
             }
             return res.json();
-        } );
+        })
 }
