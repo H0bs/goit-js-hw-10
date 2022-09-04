@@ -22,7 +22,11 @@ function onInput(e) {
     e.preventDefault();
     countryInfo.innerHTML = '';
     countryList.innerHTML = '';
-    fetchCountries(e)
+    const input = e.target.value.trim();
+    if (!input) {
+        return
+    }
+    fetchCountries(input)
         .then(country => {
             if (country.length === 1) {
                 renderCountryEL(country);
@@ -53,20 +57,20 @@ function renderCountryEL(country) {
     </div>`
     countryInfo.insertAdjacentHTML('beforeend', markupEl);
     const langList = document.querySelector('.card__list');
-    const markupListLang = country[0].languages.map(lang => {
+    const markupListLang = country[0].languages.map(({ name }) => {
         return `
-        <li>${lang.name}</li>
+        <li>${name}</li>
         `
     }).join("");
     langList.insertAdjacentHTML('beforeend', markupListLang)
 }
 
 function renderCountryList(countries) {
-    const markup = countries.map(country => {
+    const markup = countries.map(({flags, name}) => {
         return `
         <li class="card__list">
-            <img src="${country.flags.svg}" alt="${country.name}" width="50px">
-            ${country.name}
+            <img src="${flags.svg}" alt="${name}" width="50px">
+            ${name}
             </li>       
     `
     }).join("");
